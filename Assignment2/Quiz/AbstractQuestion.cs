@@ -8,7 +8,6 @@
 
         protected AbstractQuestion(QuestionType category, string question, int points)
         {
-            //?
             this.question = question;
             this.category = category;
             this.points = points;
@@ -26,8 +25,6 @@
 
         public abstract bool EvaluateAnswer(string guess);
 
-        public abstract string getAnswer();
-        
-        
+        public abstract string getAnswer(); //rm:???
     }
 }
