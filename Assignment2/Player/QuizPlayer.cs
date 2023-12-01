@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Assignment2.Quiz;
+﻿using Assignment2.Quiz;
 
 namespace Assignment2.Player
 {

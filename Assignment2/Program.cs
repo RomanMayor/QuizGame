@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Tracing;
-using Assignment2.Player;
+﻿using Assignment2.Player;
 using Assignment2.Quiz;
 
 namespace Assignment2
