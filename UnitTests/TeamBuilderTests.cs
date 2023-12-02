@@ -53,5 +53,56 @@ namespace UnitTests
             
             Assert.IsTrue(team.Count == 2);
         }
+        
+        [Test]
+        public void FindDuosTest()
+        {
+            var quiz = new QuestionQuiz(2);
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.ARTS, "question ART", 1, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.GEOGRAPHY, "question GEO", 2, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.GEOGRAPHY, "question GEO", 2, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.GEOGRAPHY, "question GEO", 2, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.GEOGRAPHY, "question GEO", 2, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.GEOGRAPHY, "question GEO", 2, true));
+            quiz.AddQuestion(new TFQuestion(QuestionType.MATHS, "question MATH", 5, true));
+            quiz.Reset();
+
+            var allPlayers = new List<QuizPlayer>()
+            {
+                new QuizPlayer(new Dictionary<QuestionType, float>()
+                {
+                    { QuestionType.MATHS, 0.8f}
+                }),
+                new QuizPlayer(new Dictionary<QuestionType, float>()
+                {
+                    { QuestionType.GEOGRAPHY, 0.8f}
+                }),
+                new QuizPlayer(new Dictionary<QuestionType, float>()
+                {
+                    { QuestionType.GEOGRAPHY, 0.8f}
+                }),
+                new QuizPlayer(new Dictionary<QuestionType, float>()
+                {
+                    { QuestionType.ARTS, 0.8f}
+                })
+            };
+
+            var teams = TeamBuilder.FindDuos(quiz, allPlayers, 2);
+            
+            Assert.IsTrue(teams.Count == 2);
+        }
     }
 }
