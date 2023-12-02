@@ -1,4 +1,6 @@
-﻿namespace Assignment2.Quiz
+﻿using System;
+
+namespace Assignment2.Quiz
 {
     public class TestQuestion : AbstractQuestion
     {
@@ -13,17 +15,11 @@
 
         public override bool EvaluateAnswer(string guess)
         {
-            foreach (string option in options)
-            {
-                if (string.Equals(guess, option, StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-            }
-            return false;
+            var correctAnswer = options[correctId];
+            return string.Equals(guess, correctAnswer, StringComparison.OrdinalIgnoreCase);
         }
 
-        public void AddOption(string option)
+        public virtual void AddOption(string option)
         {
             if (!options.Contains(option, StringComparer.OrdinalIgnoreCase))
             {
@@ -31,16 +27,20 @@
             }
         }
 
-        public void SetCorrect(int id)
+        public virtual void SetCorrect(int id)
         {
-            if(id>=0 && id < options.Count){
+            if(id >= 0 && id < options.Count){
                 correctId = id;
             }
         }
 
-        public override string getAnswer()
+        public override string GetAnswer(float probability)
         {
-            return options[correctId];
+            if (probability > 0)
+            {
+                return Random.NextDouble() < probability ? options[correctId] : WRONG_ANSWER;
+            }
+            return Random.NextDouble() < 1.0 / options.Count ? options[correctId] : WRONG_ANSWER;
         }
 
         public int GetOptionsCount()

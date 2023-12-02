@@ -2,6 +2,9 @@
 {
     public abstract class AbstractQuestion
     {
+        protected const string WRONG_ANSWER = "WRONG_ANSWER_98204985";
+
+        protected readonly Random Random = new Random();
         protected string question;
         protected QuestionType category;
         protected int points;
@@ -25,6 +28,6 @@
 
         public abstract bool EvaluateAnswer(string guess);
 
-        public abstract string getAnswer(); //rm:???
+        public abstract string GetAnswer(float probability);
     }
 }

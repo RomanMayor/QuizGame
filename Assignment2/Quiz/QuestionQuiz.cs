@@ -17,7 +17,7 @@ namespace Assignment2.Quiz
 
         public void AddQuestion(AbstractQuestion question)
         {
-            if(questions.Count<length && !questions.Contains(question))
+            if(questions.Count < length && !questions.Contains(question))
             {
                 questions.Add(question);
             }
@@ -34,7 +34,7 @@ namespace Assignment2.Quiz
             {
                 return null;
             }
-            else if(current == length)
+            else if (current == length)
             {
                 return null;
             }

@@ -14,9 +14,13 @@
             return string.Equals(guess, answer, StringComparison.OrdinalIgnoreCase);
         }
 
-        public override string getAnswer()
+        public override string  GetAnswer(float probability)
         {
-            return answer;
+            if(probability > 0)
+            {
+                return Random.NextDouble() < probability ? answer : WRONG_ANSWER;
+            }
+            return Random.NextDouble() < 0.5f ? answer : WRONG_ANSWER;
         }
     }
 }
