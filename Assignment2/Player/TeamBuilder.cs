@@ -27,7 +27,7 @@ namespace Assignment2.Player
                 {
                     foreach (var category in categories)
                     {
-                        player.Score = player.Player.GetKnowledgeLevel(category.Key) * category.Value;
+                        player.Score += player.Player.GetKnowledgeLevel(category.Key) * category.Value;
                     }
                 }
 
